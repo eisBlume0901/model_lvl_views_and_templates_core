@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}Project Management App{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+        @layer components {
+            input[type="text"] {
+                @apply border-2 bg-teal-100 text-teal-900 rounded-md p-2 focus:outline-none focus:ring-indigo-900 w-full;
+            }
+
+            button {
+                @apply bg-teal-900 text-teal-100 font-medium px-4 py-2 rounded-md flex mx-auto justify-center mt-6 hover:bg-teal-100 hover:text-teal-900;
+            }
+
+            .card {
+                @apply flex flex-col bg-teal-100 shadow-md shadow-teal-200 rounded-md p-4;
+            }
+
+            li, h1, p, label {
+                @apply text-teal-900;
+            }
+
+            .plain-card {
+                @apply flex flex-col gap-4 p-4;
+            }
+
+            .plain-card h1 {
+                @apply text-center text-4xl font-bold;
+            }
+
+            .plain-card p {
+                @apply text-center text-base;
+            }
+
+            .form-card {
+                @apply flex flex-col gap-4 p-4
+            }
+
+            .form-card label {
+                @apply text-lg font-medium;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans bg-teal-50 max-w-screen-md mx-auto">
+<nav>
+    <div class="mx-auto p-4 mt-2">
+        <ul class="flex flex-row justify-between gap-3">
+            <li><a href="">Home</a></li>
+            <li><a href="">Features</a></li>
+            <li><a href="">Pricing</a></li>
+            <li><a href="">FAQs</a></li>
+            <li><a href="">About</a></li>
+        </ul>
+    </div>
+</nav>
+ {% block content %}{% endblock %}
+</body>
+</html>

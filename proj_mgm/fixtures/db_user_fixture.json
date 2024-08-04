@@ -1,0 +1,47 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "username": "admin",
+      "password": "pbkdf2_sha256$720000$cZQ2gNKE6jTq0UAWvDTHyB$3Z+I9/DZ+6GGlBRfmUH/+CzEz6sduAPyw6QJfyE6pDA=",
+      "email": "admin@eisBlume0901.com",
+      "is_superuser": true,
+      "is_staff": true,
+      "is_active": true
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "username": "claire-project-manager",
+      "password": "pbkdf2_sha256$720000$cZQ2gNKE6jTq0UAWvDTHyB$3Z+I9/DZ+6GGlBRfmUH/+CzEz6sduAPyw6QJfyE6pDA=",
+      "email": "claire_projmgr@eisBlume0901.com",
+      "is_staff": true,
+      "is_active": true
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+      "username": "emerald-team-leader",
+      "password": "pbkdf2_sha256$720000$cZQ2gNKE6jTq0UAWvDTHyB$3Z+I9/DZ+6GGlBRfmUH/+CzEz6sduAPyw6QJfyE6pDA=",
+      "email": "emerald_tmlead@eisBlume0901.com",
+      "is_staff": true,
+      "is_active": true
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+      "username": "mary-team-member",
+      "password": "pbkdf2_sha256$720000$cZQ2gNKE6jTq0UAWvDTHyB$3Z+I9/DZ+6GGlBRfmUH/+CzEz6sduAPyw6QJfyE6pDA=",
+      "email": "mary_tmember@eisBlume0901.com",
+      "is_staff": true,
+      "is_active": true
+    }
+  }
+]

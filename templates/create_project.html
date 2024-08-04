@@ -3,9 +3,40 @@
 {% block content %}
     <form method="POST" enctype="multipart/form/data" class="max-w-screen-sm mx-auto">
      {% csrf_token %}
+        <h1 class="text-3xl text-center font-medium p-4">Create Project</h1>
         <div class="form-card">
-            <label for="">Banana</label>
-            <input type="text">
+            <label>{{ form.name.label}}</label>
+            {{ form.name }}
+
+            {% if form.name.errors %}
+                <ul>
+                    {% for error in form.name.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="form-card">
+            <label>{{ form.slug.label}}</label>
+            {{ form.slug }}
+            {% if form.name.errors %}
+                <ul>
+                    {% for error in form.name.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="form-card">
+            <label>{{ form.description.label}}</label>
+            {{ form.description }}
+            {% if form.name.errors %}
+                <ul>
+                    {% for error in form.name.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
         </div>
     <button type="submit" name="submit" value="Submit" class="w-20">Submit</button>
     </form>

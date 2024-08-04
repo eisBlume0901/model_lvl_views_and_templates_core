@@ -8,10 +8,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style type="text/tailwindcss">
         @layer components {
-            input[type="text"] {
+            input, input[type="text"], input[type="password"] {
                 @apply border-2 bg-teal-100 text-teal-900 rounded-md p-2 focus:outline-none focus:ring-indigo-900 w-full;
             }
 
+            textarea {
+                @apply border-2 bg-teal-100 text-teal-900 rounded-md p-2 focus:outline-none focus:ring-indigo-900 w-full h-48;
+            }
             button {
                 @apply bg-teal-900 text-teal-100 font-medium px-4 py-2 rounded-md flex mx-auto justify-center mt-6 hover:bg-teal-100 hover:text-teal-900;
             }
@@ -36,13 +39,14 @@
                 @apply text-center text-base;
             }
 
-            .form-card {
+            .form-card{
                 @apply flex flex-col gap-4 p-4
             }
 
             .form-card label {
                 @apply text-lg font-medium;
             }
+
         }
     </style>
 </head>

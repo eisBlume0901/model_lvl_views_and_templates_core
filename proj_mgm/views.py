@@ -3,11 +3,12 @@ from django.contrib.auth import login as auth_login, logout as auth_logout, auth
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Project
 from .forms import Projectform, AuthenticatedUserForm
+from django.contrib import messages
 # Create your views here.
 def index(request):
     return render(request, "index.html")
-
-@permission_required("proj_mgm.view_project", login_url="login")
+@login_required(login_url="/login/")
+@permission_required("proj_mgm.view_project")
 def project_listing(request):
     project_data = Project.objects.all()
     context = {
@@ -15,18 +16,36 @@ def project_listing(request):
     }
     return render(request, "project.html", context)
 
-def create_project(request):
-    form = Projectform()
-
-    return render(request, "create_project.html", {"form": form})
-
-@login_required(login_url="login")
-def project_detail(request):
-    project = get_object_or_404(Project, id=id)
+@login_required(login_url="/login/")
+@permission_required("proj_mgm.view_project")
+def project_detail(request, id):
+    project = get_object_or_404(Project, slug=id)
     context = {
         "project_detail": project
     }
     return render(request, "detail.html", context)
+
+
+@login_required(login_url="/login/")
+@permission_required(
+    {("proj_mgm.view_project"), ("proj_mgm.can_add_new_project")}
+)
+def create_project(request):
+    form = Projectform()
+    if request.method == "POST":
+        form = Projectform(data=request.POST)
+        if form.is_valid():
+            project = form.save(commit=False) # commit set to false means that the object is not saved to the database
+            # We have to do the commit set to false first because we need to add the user to the project
+            project.user = request.user
+            project.save()
+            messages.success(request, "Project created successfully")
+            return redirect("project_listing")
+        else:
+            messages.error(request, "Project creation failed. Please try again")
+
+    return render(request, "create_project.html", {"form": form})
+
 
 def login(request):
     if request.method == "POST":

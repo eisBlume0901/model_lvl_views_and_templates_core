@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_URL = '/login/' # This is the URL that will be used to redirect to the login page
 
 # Application definition
 

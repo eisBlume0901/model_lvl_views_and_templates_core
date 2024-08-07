@@ -7,7 +7,6 @@ class Projectform(forms.ModelForm):
         model = Project
         fields = ['name', 'slug', 'description']
 
-
 class AuthenticatedUserForm(AuthenticationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',

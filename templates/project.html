@@ -1,17 +1,39 @@
 {% extends 'base.html' %}
 {% block title %}Project Listings{% endblock %}
 {% block content %}
-    <div class="grid grid-cols-3 gap-4 mx-auto mt-6">
 
-        <div class="card">
-            Banana
-        </div>
-        <div class="card">
-            Banana
-        </div>
-        <div class="card">
-            Banana
+    <div class="relative">
+        <div class="flex flex-col absolute">
+            {% for message in messages %}
+                <div class="message-popup">
+                    {{ message }}
+                </div>
+            {% endfor %}
         </div>
     </div>
-    <button><a href="">New Project</a></button>
+    <div class="grid grid-cols-3 gap-4 mx-auto mt-6">
+
+    {% for project in project_data %}
+        <div class="card">
+        <h1>
+           <a href="{% url 'project_detail' project.slug %}">
+                {{ project.name }}
+            </a>
+        </h1>
+
+            {% if project.description|length > 100 %}
+                <p>
+                    {{ project.description|slice:":100" }}...
+                </p>
+            {% else %}
+                <p>
+                    {{ project.description }}
+                </p>
+            {% endif %}
+        </div>
+    {% endfor %}
+    </div>
+    {% if perms.project.can_add_new_project %}
+        <button><a href="{% url 'create_project' %}">New Project</a></button>
+    {% endif %}
 {% endblock %}
